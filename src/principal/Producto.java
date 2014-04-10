@@ -14,7 +14,8 @@ public abstract class Producto {
 	}
 
 	public double precioFinal() {
-
+		//FIXME eviten poner variables locales intermedias que no
+		//no aportan nada. 
 		Marca marcaProducto = this.getMarca();
 		double precioIntermedio = this.precioIntermedio();
 

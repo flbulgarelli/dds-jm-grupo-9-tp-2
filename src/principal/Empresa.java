@@ -4,6 +4,10 @@ import java.util.*;
 import principal.Venta;
 
 public class Empresa {
+	//FIXME Cuando tipen las colecciones, siempre pongan el parámetro de tipo
+	//Se acuerdan que en Hakell tipabamos a las listas no simplemente como lista 
+	//sino como lista de algo? ([a])
+	//Bueno, acá es lo mismo. Una lista de ventas se tipa como List<Venta>
 	private List ventas = new LinkedList();
 	public static double valorXdelNegocio = 0;
 	public static double tasaImportacion = 0;
@@ -18,6 +22,9 @@ public class Empresa {
 		this.setVentas(new LinkedList());
 	}
 
+	//FIXME cuando hagamos tests la necesidad de tener un workspace
+	//en un main se elimina, pero mientras tanto, si van a hacerlo
+	//ponganlo siempre en un archivo disinto, en una clase, por ejemplo, Main
 	public static void main(String[] args) {
 		Empresa empresa = new Empresa();
 		Empresa.setValorXdelNegocio(150);
@@ -56,7 +63,13 @@ public class Empresa {
 
 	}
 
+	//FIXME no se compliquen!
+	//Usen lo mensajes de colecciones anáogos a los de Smalltalk
+	//Esto que están aca es una simple sumatoria, así que se puede escribir como
+	// ventasDelDia(unDia).stream().mapToDouble(Venta::valor).sum();
+	//más simple no?
 	public double ganciasDelDia(Date unDia) {
+		
 		List ventasDia = this.ventasDelDia(unDia);
 		double ganancias = 0;
 
@@ -79,7 +92,10 @@ public class Empresa {
 		getVentas().add(new Venta(unProducto, unDia, unaCantidad));
 	}
 
-	public List ventasDelDia(Date unDia) {
+	//FIXME idem anterior. Tipen al retorno como List<Venta>, y no List.
+	//Acá yo y alo hice por ustedes en el retorno. 
+	//FIXME acá también pueden usar el mensaje de colecciones filter, que devuelve un Stream, no un List
+	public List<Venta> ventasDelDia(Date unDia) {
 		List ventasDia = new LinkedList();
 		List ventas = getVentas();
 		Iterator iterador = ventas.iterator();
